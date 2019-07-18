@@ -1,0 +1,122 @@
+body{
+    margin: 0;
+    font-family: helvetica
+}
+
+h1{
+    padding: 0;
+    margin: 0;
+    color: #707070;
+
+}
+
+h2{
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    color: #707070;
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+p{padding: 0;margin: 0; font-size: 8px;
+    color: #707070;}
+
+@font-face {
+    font-family: helvetica;
+    src: url("./font/HelveticaNeue-Condensed.otf");
+  }
+
+.main-content {
+  width: 1474px;
+  height: 943px;
+  
+  position: relative;
+  margin: auto;
+  background-color: aqua;
+}
+
+.main-content .list-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  /* width: 100%;
+  height: 804px; */
+  background-color: #ffffff;
+}
+
+.main-content .list-item .item-box {
+  margin: 20px;
+  width: 193px;
+  height: 254px;
+  border: solid 1px #707070;
+  background-color: #ffffff;
+}
+
+.main-content .list-item .item-box .img-item-box{
+    width: 100%;
+    height: 180px;
+  
+}
+
+.main-content .list-item .item-box .img-item-box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.main-content .list-item .item-box .item-box-content{
+    height: 74px;
+    margin-left: 12px;
+    margin-right: 7px;
+}
+
+.main-content .list-item .item-box .item-box-content .cart-item-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 23px;
+    margin-top: 8px;
+}
+
+.main-content .list-item .item-box .item-box-content .cart-item-button button{
+    height: 21px;
+    width: 64px;
+    border: solid 1px #707070;
+    background-color: #ffffff;
+}
+
+
+.main-content .menu-cart{
+    height: 346px;
+    width: 1474px;
+    border: solid 1px #707070;
+  background-color: #ffffff;
+  display: flex;
+}
+
+.main-content .menu-cart .list-menu{
+    margin-left: 47px;
+    width: 50%;
+}
+
+.main-content .menu-cart .list-menu h1{
+    font-size: 26px;
+    color: #707070;
+}
+
+.main-content .list-menu .item-box{
+    color: #707070;
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+    width: 714px;
+    height: 44px;
+    border: solid 1px #707070;
+    justify-content: space-around;
+}
+
+.main-content .list-menu .item-box span{
+    font-size: 11px;
+}

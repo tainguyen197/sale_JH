@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./javascript.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <div>
+        <span>BT1: Nhập câu cần chuyển đổi</span>
+      </div>
+      <div>
+        <input id="bt1" />
+        <button id="bt1Sub">Chuyển đổi</button>
+      </div>
+      <div>
+        <p>Kết quả</p>
+        <p id="kq1"></p>
+      </div>
+    </section>
+    <script>
+      const Input1 = document.getElementById("bt1");
+      const Submit1 = document.getElementById("bt1Sub");
+      const Result1 = document.getElementById("kq1");
+      document.getElementById("bt1Sub").addEventListener("click", Cal1);
+
+      function Cal1() {
+      const inputString = Input1.value;
+        const str = []
+       
+        const patt1 = /[^a-zA-Z@-_]/g;
+        str.push(inputString.charAt(0).toUpperCase() + inputString.substring(1, inputString.lenght));
+
+
+        while (patt1.test(str[str.length - 1]) === true) {
+          const index = patt1.lastIndex;
+          const upChar = str[str.length-1].charAt(index).toUpperCase();
+          str.push(
+            str[str.length - 1].substring(0, index) +
+            upChar +
+            str[str.length - 1].substring(index + 1, str[str.length - 1].length));
+
+          // //kiem tra xem co ki tu nao ngay sao do?
+
+          // if (
+          //   (str[patt1.lastIndex] >= "a" && str[patt1.lastIndex] <= "z") ||
+          //   (str[patt1.lastIndex] >= "A" && str[patt1.lastIndex] <= "Z")
+          // ) {
+          //   if(str[patt1.lastIndex-1] !== " ")
+          //   str = str.substring(0, index) + " " + str.substring(index,str.lenght);
+          // }
+        }
+        Result1.textContent = str[str.length - 1];
+        //Chuan hoa chuoi
+        // while (patt1.test(str) === true) {
+        //   const index = patt1.lastIndex;
+        //   // //kiem tra xem co ki tu nao ngay sao do?
+        //   if (
+        //     (str[patt1.lastIndex] >= "a" && str[patt1.lastIndex] <= "z") ||
+        //     (str[patt1.lastIndex] >= "A" && str[patt1.lastIndex] <= "Z")
+        //   ) {
+        //     if(str[patt1.lastIndex-1] !== " ")
+        //     str = str.substring(0, index) + " " + str.substring(index,str.lenght);
+        //   }
+        // }
+
+        // //chuyen thanh chu thuong
+        // str.toLowerCase();
+        // str = str.charAt(0).toUpperCase();  + str.substring(1,str.lenght)
+
+        // while(str.indexOf(" ",i?i:0) !== -1){
+
+        //   str = str.substring(0,i) + upChar + str.substring(i + 1,str.lenght)
+        // }
+
+        // Result1.textContent=str;
+
+        //-@_ laf 
+      }
+    </script>
+  </body>
+</html>
