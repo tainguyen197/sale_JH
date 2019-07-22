@@ -1,6 +1,18 @@
+function create_UUID(){
+  var dt = new Date().getTime();
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (dt + Math.random()*16)%16 | 0;
+      dt = Math.floor(dt/16);
+      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+  });
+  return uuid;
+}
+
+// const uuidv4 = require('uuid/v4');
+
 const listItem = [
   {
-    id: 1,
+    id: create_UUID(),
     name: "Dress",
     describe: "Awn aywd gyawdgy wada awdv",
     price: {
@@ -9,7 +21,7 @@ const listItem = [
     }
   },
   {
-    id: 2,
+    id: create_UUID(),
     name: "Dress",
     describe: "Awn aywd gyawdgy wada awdv",
     price: {
@@ -18,7 +30,7 @@ const listItem = [
     }
   },
   {
-    id: 3,
+    id: create_UUID(),
     name: "Dress",
     describe: "Awn aywd gyawdgy wada awdv",
     price: {
@@ -27,7 +39,7 @@ const listItem = [
     }
   },
   {
-    id: 4,
+    id: create_UUID(),
     describe: "Awn aywd gyawdgy wada awdv",
     name: "Dress",
     price: {
@@ -36,7 +48,7 @@ const listItem = [
     }
   },
   {
-    id: 5,
+    id: create_UUID(),
     name: "Dress",
     describe: "Awn aywd gyawdgy wada awdv",
     price: {
@@ -45,7 +57,7 @@ const listItem = [
     }
   },
   {
-    id: 6,
+    id: create_UUID(),
     describe: "Awn aywd gyawdgy wada awdv",
     name: "Dress",
     price: {
@@ -54,7 +66,7 @@ const listItem = [
     }
   },
   {
-    id: 7,
+    id: create_UUID(),
     name: "Dress",
     describe: "Awn aywd gyawdgy wada awdv",
     price: {
@@ -63,7 +75,7 @@ const listItem = [
     }
   },
   {
-    id: 8,
+    id: create_UUID(),
     describe: "Awn aywd gyawdgy wada awdv",
     name: "Dress",
     price: {
@@ -72,7 +84,7 @@ const listItem = [
     }
   },
   {
-    id: 9,
+    id: create_UUID(),
     name: "Dress",
     describe: "Awn aywd gyawdgy wada awdv",
     price: {
@@ -81,7 +93,7 @@ const listItem = [
     }
   },
   {
-    id: 10,
+    id: create_UUID(),
     describe: "Awn aywd gyawdgy wada awdv",
     name: "Dress",
     price: {
@@ -90,7 +102,7 @@ const listItem = [
     }
   },
   {
-    id: 11,
+    id: create_UUID(),
     describe: "Awn aywd gyawdgy wada awdv",
     name: "Dress",
     price: {
@@ -99,7 +111,7 @@ const listItem = [
     }
   },
   {
-    id: 12,
+    id: create_UUID(),
     describe: "Awn aywd gyawdgy wada awdv",
     name: "Dress",
     price: {
@@ -120,7 +132,10 @@ const totalPrice = {
     successfulCost: 10000
   }
 };
-const listCart = [];
+const User ={
+  id:create_UUID(),
+  buyItem:[]
+};
 const listMenu = document.getElementById("list-menu");
 listMenu.classList.add("list-menu");
 const menu = document.getElementById("menu");
@@ -178,16 +193,16 @@ const initItems = function() {
 };
 
 const isDuplicate = obj => {
-  return listCart.some(item => {
-    if (obj === item) return true;
+  return User.buyItem.some(item => {
+    if (obj === item) return true;  
   });
 };
 
 updateNumberItem = (item, number) => {
   if (item.number <= 1 && number < 0) {
-    listCart.some((itemCart, index) => {
+    User.buyItem.some((itemCart, index) => {
       if (itemCart.id === item.id) {
-        listCart.splice(index, 1);
+        User.buyItem.splice(index, 1);
         return true;
       }
     });
@@ -229,7 +244,7 @@ updatePriceItem = item => {
   totalPrice.totalPrice.sellPrice = 0;
   totalPrice.totalPrice.receivePrice = 0;
 
-  listCart.forEach(item => {
+  User.buyItem.forEach(item => {
     totalPrice.totalPrice.sellPrice +=
       item.number * item.price.sellPrice +
       item.price.tax * item.price.sellPrice * item.number;
@@ -269,7 +284,7 @@ const addCart = item => {
     updateNumberItem(item, 1);
   } else {
     item.number = 1;
-    listCart.push(item);
+    User.buyItem.push(item);
 
     // customer
     const numberInput = document.createElement("input");
